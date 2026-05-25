@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from picrawler import Picrawler
 from time import sleep, time
-from robot_hat import Music, TTS
+from robot_hat import Music
+from robot_hat.tts import Espeak
 from vilib import Vilib
 import readchar
 import random
@@ -9,7 +10,7 @@ import threading
 
 crawler = Picrawler()
 music = Music()   # kept for compatibility (not used here)
-tts = TTS()
+tts = Espeak()
 
 MANUAL = '''
 Press keys on keyboard to control Picrawler!

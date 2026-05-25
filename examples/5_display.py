@@ -3,6 +3,7 @@ from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import threading
 from os import getlogin
+import readchar
 import cv2
 
 USERNAME = getlogin()
@@ -78,14 +79,23 @@ def object_show():
             h = Vilib.detect_obj_parameter.get('human_h')
             print("[Face Detect] Coordinate:", (x, y), "Size:", (w, h))
 
+def has_display():
+    """Check if an X11/Wayland display is available."""
+    import os
+    return bool(os.environ.get('DISPLAY') or os.environ.get('WAYLAND_DISPLAY'))
+
+
 def open_local_preview():
     """
-    用 OpenCV 显示 Vilib 的 MJPG web stream，替代 Vilib.display(local=True)
-    这样避免 Vilib 本地窗口闪退。
+    OpenCV local preview via Vilib MJPG web stream.
+    Returns None when running headless (no display).
     """
+    if not has_display():
+        print("[INFO] No display detected — headless mode. Web preview only.")
+        return None
+
     url = "http://127.0.0.1:9000/mjpg"
     cap = cv2.VideoCapture(url)
-    # 有些环境第一次打开会慢/失败，做简单重试
     for _ in range(30):
         if cap.isOpened():
             break
@@ -101,43 +111,54 @@ def open_local_preview():
     cv2.namedWindow("Vilib Preview (MJPG)", cv2.WINDOW_NORMAL)
     return cap
 
+def _display_refresh(cap, running):
+    """Refresh OpenCV preview window (only when display is available)."""
+    while running[0]:
+        if cap is not None:
+            ret, frame = cap.read()
+            if ret and frame is not None:
+                cv2.imshow("Vilib Preview (MJPG)", frame)
+                cv2.waitKey(1)
+        sleep(0.03)
+
+
 def main():
     global flag_face, flag_color, qr_code_flag
     qrcode_thread = None
 
     Vilib.camera_start(vflip=False, hflip=False)
-
-    # ✅ 关键：不要用 local=True（它会在部分环境闪退）
-    # 只开 web，让我们自己用 OpenCV 显示 mjpg
     Vilib.display(local=False, web=True)
-
     print(MANUAL)
 
+    use_display = has_display()
     cap = open_local_preview()
+
+    running = [True]
+    if use_display and cap is not None:
+        display_thread = threading.Thread(target=_display_refresh, args=(cap, running), daemon=True)
+        display_thread.start()
 
     try:
         while True:
-            # --- 本地预览窗口（可选） ---
-            if cap is not None:
-                ret, frame = cap.read()
-                if ret and frame is not None:
-                    cv2.imshow("Vilib Preview (MJPG)", frame)
-
-            # --- 用 cv2.waitKey 读按键（不再用 readchar）---
-            k = cv2.waitKey(1) & 0xFF
-
-            if k == 27:  # ESC
-                break
-
-            key = None
-            if k != 255:  # 255 表示没按键（不同系统略有差异）
+            if use_display and cap is not None:
+                k = cv2.waitKey(1) & 0xFF
+                if k == 27:  # ESC
+                    break
+                key = chr(k).lower() if k not in (255, 0) else None
+            else:
                 try:
-                    key = chr(k).lower()
+                    key = readchar.readkey().lower()
                 except Exception:
-                    key = None
+                    continue
+
+            if key is None:
+                continue
 
             if key == 'q':
                 take_photo()
+
+            elif key == '\x1b':  # ESC
+                break
 
             elif key in ['0','1','2','3','4','5','6']:
                 index = int(key)
@@ -165,12 +186,11 @@ def main():
             elif key == 's':
                 object_show()
 
-            sleep(0.01)
-
     except KeyboardInterrupt:
         print("\nQuit.")
 
     finally:
+        running[0] = False
         qr_code_flag = False
 
         try:
