@@ -89,10 +89,9 @@ def swimming(speed, loops=100):
 
 
 def main():
-    speed = 100
+    speed = 55
 
     try:
-        # Stand up slowly before performing actions
         crawler.do_step('stand', 40)
         sleep(1.0)
 

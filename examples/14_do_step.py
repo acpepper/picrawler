@@ -14,7 +14,7 @@ stand_step = crawler.move_list['stand'][0]
 
 
 def main():
-    action_speed = 80  # Speed for movement actions
+    action_speed = 50
 
     try:
         # Stand up slowly at 40% speed to reduce current spikes

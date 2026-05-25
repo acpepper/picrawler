@@ -151,8 +151,8 @@ def excited(spider):
         [[45, 45, -50], [45, 0, -50], [45, 0, -50], [45, 45, -50]],
     ]
     for coord in coords:
-        spider.do_step(coord, 30)
-        sleep(0.15)
+        spider.do_step(coord, 40)
+        sleep(0.08)
 
 def play_dead(spider):
     sit = [
