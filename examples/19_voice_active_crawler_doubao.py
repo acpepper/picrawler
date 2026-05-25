@@ -9,7 +9,7 @@ llm = LLM(
 )
 
 # 机器人的名字
-NAME = "小爬"
+NAME = "Buddy"
 
 # 是否开启图像识别，需要使用多模态的大语言模型
 WITH_IMAGE = True
@@ -29,7 +29,7 @@ WAKE_WORD = ["hey buddy"]
 ANSWER_ON_WAKE = "来啦"
 
 # 欢迎消息
-WELCOME = f"你好，我是{NAME}，对我说：{WAKE_WORD[0]} 唤醒我吧"
+WELCOME = f"你好，我是{NAME}，对我说 {WAKE_WORD[0]} 唤醒我吧"
 
 # Set instructions
 INSTRUCTIONS = """

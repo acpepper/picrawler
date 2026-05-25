@@ -10,7 +10,7 @@ llm = LLM(
 )
 
 # Robot name
-NAME = "Crawler"
+NAME = "Buddy"
 
 # Enable image (requires multimodal model)
 WITH_IMAGE = False
