@@ -23,7 +23,7 @@ KEYBOARD_ENABLE = True
 
 # Enable wake word
 WAKE_ENABLE = True
-WAKE_WORD = [f"hey {NAME.lower()}"]
+WAKE_WORD = ["hey buddy"]
 # Set wake word answer, set empty to disable
 ANSWER_ON_WAKE = "Hi there"
 

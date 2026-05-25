@@ -24,12 +24,12 @@ KEYBOARD_ENABLE = True
 # 是否开启唤醒词
 WAKE_ENABLE = True
 # 唤醒词
-WAKE_WORD = [f"小爬"]
+WAKE_WORD = ["hey buddy"]
 # 唤醒词回答，设置为空字符串则不回答
 ANSWER_ON_WAKE = "来啦"
 
 # 欢迎消息
-WELCOME = f"你好，我是{NAME}, 叫我{WAKE_WORD[0]}唤醒我吧"
+WELCOME = f"你好，我是{NAME}，对我说：{WAKE_WORD[0]} 唤醒我吧"
 
 # Set instructions
 INSTRUCTIONS = """
