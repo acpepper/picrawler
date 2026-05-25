@@ -1,5 +1,6 @@
 from robot_hat import Robot, utils
 
+import os
 import time
 import math
 
@@ -7,7 +8,7 @@ class Picrawler(Robot):
     A = 48
     B = 78
     C = 33
-    OFFSET_FILE = '/opt/picrawler/picrawler.config'
+    OFFSET_FILE = os.path.expanduser('~/.config/.picrawler.config')
     PIN_LIST = [9, 10, 11, 3, 4, 5, 0, 1, 2, 6, 7, 8]
 
     def __init__(self, pin_list=PIN_LIST, init_angles=None):  

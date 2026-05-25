@@ -1,9 +1,10 @@
 from time import sleep
 import readchar
-from robot_hat import Music, TTS
+from robot_hat import Music
+from robot_hat.tts import Espeak
 
 music = Music()
-tts = TTS()
+tts = Espeak()
 
 manual = '''
 Press a key to trigger actions (no Enter needed):
@@ -20,7 +21,6 @@ def main():
 
     flag_bgm = False
     music.music_set_volume(20)
-    tts.lang("en-US")
 
     try:
         while True:
