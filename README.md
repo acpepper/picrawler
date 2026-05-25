@@ -85,12 +85,12 @@ sudo python3 ~/picrawler/examples/1_move.py
 | 12 | `12_twist.py` | Twist / body rotation |
 | 13 | `13_emotional_robot.py` | Emotional expression robot |
 | 14 | `14_do_step.py` | Custom step coordinate control |
-| 15 | `15_servo_zeroing.py` | Servo zeroing utility |
-| 16 | `16_stt.py` | Speech-to-text demo |
-| 17 | `17_tts.py` | Text-to-speech demo |
-| 18 | `18_voice_active_crawler_gpt.py` | Voice AI with GPT-4o |
-| 19 | `19_voice_active_crawler_ollama.py` | Voice AI with Ollama (local) |
-| 20 | `20_voice_active_crawler_doubao.py` | Voice AI with Doubao (Chinese) |
+| | `servo_zeroing.py` | Servo zeroing utility (not numbered) |
+| 15 | `15_stt.py` | Speech-to-text demo |
+| 16 | `16_tts.py` | Text-to-speech demo |
+| 17 | `17_voice_active_crawler_gpt.py` | Voice AI with GPT-4o |
+| 18 | `18_voice_active_crawler_ollama.py` | Voice AI with Ollama (local) |
+| 19 | `19_voice_active_crawler_doubao.py` | Voice AI with Doubao (Chinese) |
 
 ----------------------------------------------
 

@@ -33,7 +33,7 @@ picrawler/
   stt.py               # Re-exports STT from robot_hat.stt
   tts.py               # Re-exports TTS from robot_hat.tts
   version.py           # Version string (2.1.4)
-examples/              # Numbered demo scripts (0-20, matching online course)
+examples/              # Numbered demo scripts (0-19, matching online course)
   voice_active_crawler.py     # VoiceActiveCrawler class (base, not numbered)
   secret.py                   # API keys (git-ignored)
 ```
@@ -90,18 +90,17 @@ sudo python3 examples/5_display.py           # Camera display
 sudo python3 examples/7_bull_fight.py        # Bull fight game
 sudo python3 examples/9_preset_actions.py    # Pose demonstration
 
-# Extended examples (14-15)
+# Extended examples (14)
 sudo python3 examples/14_do_step.py          # Custom step control
-sudo python3 examples/15_servo_zeroing.py     # Servo zeroing
 
-# STT/TTS demos (16-17)
-sudo python3 examples/16_stt.py              # Speech-to-text
-sudo python3 examples/17_tts.py              # Text-to-speech
+# STT/TTS demos (15-16)
+sudo python3 examples/15_stt.py              # Speech-to-text
+sudo python3 examples/16_tts.py              # Text-to-speech
 
-# Voice AI (18-20)
-sudo python3 examples/18_voice_active_crawler_gpt.py     # OpenAI GPT-4o
-sudo python3 examples/19_voice_active_crawler_ollama.py   # Local Ollama
-sudo python3 examples/20_voice_active_crawler_doubao.py   # Doubao (Chinese)
+# Voice AI (17-19)
+sudo python3 examples/17_voice_active_crawler_gpt.py     # OpenAI GPT-4o
+sudo python3 examples/18_voice_active_crawler_ollama.py   # Local Ollama
+sudo python3 examples/19_voice_active_crawler_doubao.py   # Doubao (Chinese)
 ```
 
 Configure API keys in `examples/secret.py` before running LLM-based examples.
