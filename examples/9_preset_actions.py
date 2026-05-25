@@ -129,7 +129,8 @@ def fighting(spider):
         spider.do_step(coord, 52)
     sleep(0.2)
     for coord in pounce_bite:
-        spider.do_step(coord, 65)
+        spider.do_step(coord, 40)
+        sleep(0.1)
     sleep(1)
     for coord in return_stand:
         spider.do_step(coord, 52)
@@ -150,7 +151,8 @@ def excited(spider):
         [[45, 45, -50], [45, 0, -50], [45, 0, -50], [45, 45, -50]],
     ]
     for coord in coords:
-        spider.do_step(coord, 50)
+        spider.do_step(coord, 30)
+        sleep(0.15)
 
 def play_dead(spider):
     sit = [
@@ -379,7 +381,8 @@ def push_up(spider):
     for coord in ready:
         spider.do_step(coord,70)
     for coord in push_up:
-        spider.do_step(coord, 50)
+        spider.do_step(coord, 35)
+        sleep(0.1)
 
 
 actions_dict = {
