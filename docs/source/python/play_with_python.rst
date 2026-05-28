@@ -23,7 +23,7 @@ If you already know how to use Raspberry Pi and access its command line, you may
 
 .. _quick_guide_python:
 
-1. Quick Guide on Python
+Quick Guide on Python
 --------------------------------------------
 
 Learn how to set up your Raspberry Pi environment:  
@@ -41,7 +41,7 @@ If you already know how to use Raspberry Pi and access its command line, you may
     py_servo_adjust
     
     
-2. Calibrating PiCrawler
+Calibrating PiCrawler
 ----------------------------------------------
 
 
@@ -53,7 +53,7 @@ As soon as the assembly is completed, you need to calibrate the PiCrawler to pre
     calibrate
 
 
-3. Hands-on Python Projects
+Hands-on Python Projects
 ----------------------------------------------
 
 In this section, you will explore practical Python projects to control and extend PiCrawler.  
@@ -74,6 +74,7 @@ These examples demonstrate movement control, sensor-based interaction, sound eff
     python_record_new_step
     python_twist
     python_emotional_robot
+    python_action_gallery
 
 
 
