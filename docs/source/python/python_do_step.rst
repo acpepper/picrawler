@@ -14,7 +14,7 @@
 
 .. _py_pose:
 
-Pose
+9. Pose
 =============
 
 PiCrawler can assume a specific posture by writing a coordinate array. Here it assumes a raised right rear foot posture.
@@ -30,7 +30,7 @@ PiCrawler can assume a specific posture by writing a coordinate array. Here it a
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 do_step.py
+    sudo python3 9_do_step.py
 
 After running the program, the robot first stands up slowly to reach a stable posture.
 

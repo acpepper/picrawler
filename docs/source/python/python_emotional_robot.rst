@@ -14,8 +14,8 @@
 
 .. _py_emotional:
 
-Emotional Robot
-===============
+13. Emotional Robot
+====================================
 
 This example shows several interesting custom actions of PiCrawler.
 
@@ -28,7 +28,7 @@ This example shows several interesting custom actions of PiCrawler.
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 emotional_robot.py
+    sudo python3 13_emotional_robot.py
 
 After running the program, the robot first stands up slowly to reach a stable posture.
 

@@ -14,7 +14,7 @@
 
 .. _py_video:
 
-Record Video
+6. Record Video
 ==================
 
 This example will guide you how to use the recording function.
@@ -28,7 +28,7 @@ This example will guide you how to use the recording function.
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 record_video.py
+    sudo python3 6_record_video.py
 
 
 After the code runs, you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``http://192.168.18.113:9000/mjpg``

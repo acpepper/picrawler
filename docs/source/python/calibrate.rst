@@ -40,8 +40,8 @@ The specific steps are as follows:
 
     .. code-block::
 
-        cd ~/picrawler/examples/calibration
-        sudo python3 calibration.py
+        cd ~/picrawler/examples
+        sudo python3 0_calibration.py
         
     After running the above code, you will see the following interface displayed in the terminal.
 

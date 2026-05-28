@@ -14,7 +14,7 @@
 
 .. _py_keyboard:
 
-Keyboard Control
+2. Keyboard Control
 =======================
 
 In this project, we will learn how to use the keyboard to remotely control the PiCrawler. You can control the PiCrawler to move forward, backward, left, and right.
@@ -29,7 +29,7 @@ In this project, we will learn how to use the keyboard to remotely control the P
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 keyboard_control.py
+    sudo python3 2_keyboard_control.py
 
 When the program starts, PiCrawler initializes and a keyboard control
 interface is displayed in the terminal.

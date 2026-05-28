@@ -41,10 +41,11 @@ It features a camera module for color recognition and face detection, 12 metal-g
 
 This documentation includes the parts list, assembly guide, Robot HAT introduction, and PiCrawler programming tutorials.
 
-Programming is divided into two chapters:
+Programming is divided into three chapters:
 
-* :ref:`play_ezblock`: Use Ezblock Studio for graphical programming.
 * :ref:`play_python`: More experienced users can program PiCrawler directly using Python.
+* :ref:`play_ezblock`: Use Ezblock Studio for graphical programming.
+* :ref:`play_ai`: Add speech and AI interaction with multiple LLM backends.
 
 If you have any questions, please contact service@sunfounder.com.
 
@@ -57,9 +58,9 @@ If you have any questions, please contact service@sunfounder.com.
     About this Kit <self>
     assemble_video
     python/play_with_python 
+    ai_interaction/ai_interaction
     ezblock/play_with_ezblock
     servo_zeroing
-    openai
     appendix
     hardware/cpn_hardware
     faq

@@ -14,8 +14,8 @@
 
 .. _py_record:
 
-Record New Step
-=================
+11. Record New Step
+==============================
 
 We use the keyboard to control PiCrawler to make several poses in turn, and record these poses. Replay them later.
 
@@ -29,7 +29,7 @@ We use the keyboard to control PiCrawler to make several poses in turn, and reco
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 record_new_step_by_keyboard.py
+    sudo python3 11_record_new_step.py
 
 After the code runs, please operate according to the prompt that pops up in the terminal.
 

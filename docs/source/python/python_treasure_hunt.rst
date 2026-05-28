@@ -14,7 +14,7 @@
 
 .. _py_treasure:
 
-Treasure Hunt
+8. Treasure Hunt
 ============================
 
 Arrange a maze in your room and place six different color cards in six corners. Then control PiCrawler to search for these color cards one by one!
@@ -31,7 +31,7 @@ Arrange a maze in your room and place six different color cards in six corners. 
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 treasure_hunt.py
+    sudo python3 8_treasure_hunt.py
 
 
 **View the Image**

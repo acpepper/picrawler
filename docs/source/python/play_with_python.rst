@@ -39,10 +39,21 @@ If you already know how to use Raspberry Pi and access its command line, you may
     ../_shared/pi_start/set_up_pi
     install_all_modules
     py_servo_adjust
+    
+    
+2. Calibrating PiCrawler
+----------------------------------------------
+
+
+As soon as the assembly is completed, you need to calibrate the PiCrawler to prevent it from damaging the servo if there is a slight deviation in the assembly.
+
+.. toctree::
+    :maxdepth: 1
+
     calibrate
 
 
-2. Hands-on Python Projects
+3. Hands-on Python Projects
 ----------------------------------------------
 
 In this section, you will explore practical Python projects to control and extend PiCrawler.  

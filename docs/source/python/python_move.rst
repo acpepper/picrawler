@@ -14,7 +14,7 @@
 
 .. _py_move:
 
-Move
+1. Move
 ==============
 
 This is PiCrawler's first project. Perform its most basic function - move.
@@ -29,7 +29,7 @@ This is PiCrawler's first project. Perform its most basic function - move.
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 move.py
+    sudo python3 1_move.py
 
 When the program starts, PiCrawler stands up and waits briefly.
 

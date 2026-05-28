@@ -14,8 +14,8 @@
 
 .. _py_avoid:
 
-Obstacle Avoidance
-=====================
+4. Obstacle Avoidance
+========================
 
 In this project, picrawler will use an ultrasonic module to detect obstacles in front. 
 When PiCrawler detects an obstacle, it will send a signal and look for another direction to move forward.
@@ -29,7 +29,7 @@ When PiCrawler detects an obstacle, it will send a signal and look for another d
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 avoid.py
+    sudo python3 4_avoid.py
 
 When the program starts, PiCrawler stands up.
 

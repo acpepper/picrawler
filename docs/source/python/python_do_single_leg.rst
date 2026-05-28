@@ -14,7 +14,7 @@
 
 .. _py_posture:
 
-Adjust Posture
+10. Adjust Posture
 =====================
 
 In this example, we use the keyboard to control the PiCrawler foot by foot and assume the desired posture.
@@ -32,7 +32,7 @@ You can press the space bar to print out the current coordinate values. These co
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 do_single_leg.py
+    sudo python3 10_do_single_leg.py
 
 After the code runs, please operate according to the prompt that pops up in the terminal.
 

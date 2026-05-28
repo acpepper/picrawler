@@ -14,8 +14,8 @@
 
 .. _py_bull:
 
-Bull Fight
-==========
+7. Bull Fight
+============================
 
 Make PiCrawler an angry bull! Use its camera to track and rush the red cloth!
 
@@ -29,7 +29,7 @@ Make PiCrawler an angry bull! Use its camera to track and rush the red cloth!
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 bull_fight.py
+    sudo python3 7_bull_fight.py
 
 
 **View the Image**

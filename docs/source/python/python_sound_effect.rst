@@ -14,7 +14,7 @@
 
 .. _py_sound:
 
-Sound Effect
+3. Sound Effect
 =====================
 
 In this example, we use PiCrawler's (to be precise, Robot HAT's) sound effects. It consists of three parts, namely **Muisc**, **Sound**, **Text to Speech**.
@@ -50,7 +50,7 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 sound_effect.py
+    sudo python3 3_sound_effect.py
 
 When the program starts, a control menu is displayed in the terminal.
 

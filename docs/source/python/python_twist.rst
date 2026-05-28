@@ -14,7 +14,7 @@
 
 .. _py_twist:
 
-Twist
+12. Twist
 ==============
 
 We already know how to make PiCrawler assume a specific pose, the next step is to combine the poses to form a continuous action.
@@ -30,7 +30,7 @@ Here, PiCrawler's four feet are up and down in twos, jumping with the music.
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 twist.py
+    sudo python3 12_twist.py
 
 After the program starts, the robot first stands up slowly to reach a stable posture.
 

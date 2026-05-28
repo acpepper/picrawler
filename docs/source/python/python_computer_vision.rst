@@ -14,7 +14,7 @@
 
 .. _py_vision:
 
-Computer Vision
+5. Computer Vision
 =======================
 
 This project will officially enter the field of computer vision!
@@ -28,7 +28,7 @@ This project will officially enter the field of computer vision!
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 display.py
+    sudo python3 5_display.py
 
 **View the Image**
 
