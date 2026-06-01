@@ -29,3 +29,4 @@ Here you will explore text-to-speech (TTS), speech-to-text (STT), and large lang
     python_voice_gpt.rst 
     python_voice_doubao.rst 
     python_voice_ollama.rst
+    ../openclaw.rst
