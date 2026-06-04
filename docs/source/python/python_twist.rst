@@ -30,7 +30,7 @@ Twist
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 twist.py
+    sudo python3 12_twist.py
 
 プログラムが開始されると、ロボットはまずゆっくりと立ち上がり、安定した姿勢になります。
 

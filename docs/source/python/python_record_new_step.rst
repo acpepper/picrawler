@@ -28,7 +28,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 record_new_step_by_keyboard.py
+    sudo python3 11_record_new_step.py
 
 コードを実行した後、ターミナルに表示されるプロンプトに従って操作してください。
 

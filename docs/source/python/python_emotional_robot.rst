@@ -28,7 +28,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 emotional_robot.py
+    sudo python3 13_emotional_robot.py
 
 プログラムを実行すると、ロボットはまずゆっくりと立ち上がり、安定した姿勢になります。
 

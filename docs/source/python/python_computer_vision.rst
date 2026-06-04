@@ -29,7 +29,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 display.py
+    sudo python3 5_display.py
 
 **画像の表示**
 

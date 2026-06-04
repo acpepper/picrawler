@@ -28,7 +28,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 record_video.py
+    sudo python3 6_record_video.py
 
 
 コードが実行された後、ブラウザに ``http://<your IP>:9000/mjpg`` と入力すると、ビデオ画面が表示されます。例： ``http://192.168.18.113:9000/mjpg`` 

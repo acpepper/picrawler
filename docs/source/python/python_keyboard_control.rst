@@ -28,7 +28,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 keyboard_control.py
+    sudo python3 2_keyboard_control.py
 
 プログラムが開始されると、PiCrawler が初期化され、ターミナルにキーボード操作インターフェースが表示されます。
 

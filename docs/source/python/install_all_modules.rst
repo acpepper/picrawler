@@ -53,7 +53,7 @@
    .. code-block::
 
       cd ~/
-      git clone -b v2.0 https://github.com/sunfounder/robot-hat.git --depth 1
+      git clone -b 2.5.x --depth=1 https://github.com/sunfounder/robot-hat.git
       cd robot-hat
       sudo python3 install.py
 
@@ -84,9 +84,8 @@
    .. code-block::
    
        cd ~/
-       git clone https://github.com/sunfounder/picrawler.git --depth 1
-       cd picrawler
-       sudo python3 setup.py install
+       git clone --depth=1 https://github.com/sunfounder/picrawler.git
+       sudo pip3 install ~/picrawler --break-system-packages
    
    このステップには少し時間がかかるため、しばらくお待ちください。
 

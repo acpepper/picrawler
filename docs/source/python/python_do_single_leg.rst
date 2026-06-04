@@ -32,7 +32,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 do_single_leg.py
+    sudo python3 10_do_single_leg.py
 
 コードが実行された後、ターミナルに表示されるプロンプトに従って操作を行ってください。
 

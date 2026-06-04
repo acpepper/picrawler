@@ -49,7 +49,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 sound_effect.py
+    sudo python3 3_sound_effect.py
 
 プログラムが開始されると、ターミナルに操作メニューが表示されます。
 

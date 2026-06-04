@@ -30,7 +30,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 treasure_hunt.py
+    sudo python3 8_treasure_hunt.py
 
 
 **画像を表示する**

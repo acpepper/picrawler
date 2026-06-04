@@ -30,7 +30,7 @@
 .. code-block::
 
     cd ~/picrawler/examples
-    sudo python3 move.py
+    sudo python3 1_move.py
 
 プログラムが開始されると、PiCrawler は立ち上がり、短時間待機します。
 
