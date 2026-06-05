@@ -271,9 +271,11 @@ Where `<lang>` corresponds to the branch suffix: `en`, `de`, `zh-cn`, `fr`, `es`
    - Copy the structure and code blocks as-is
    - Translate all descriptive/navigational text to the target language
    - Keep `.. _ref_label:`, `:ref:`, `.. image::`, `.. code-block::` directives unchanged
+   - **Critical:** When translating section titles, extend the RST underline (`===`, `---`, `^^^`, `~~~`) to match the new title length. Translated titles are often longer than English (e.g., "Poses" → "Postures"), and Sphinx will error with `Title underline too short` if the underline is shorter than the title.
 4. For `index.rst`: merge new toctree entries, translate new section descriptions
 5. For `conf.py`: add new `|link_xxx|` definitions from EN branch (translate link text only)
 6. Build locally to verify no broken references
+7. **Review [Common Pitfalls](#common-pitfalls-when-syncing-translation-branches) before and after every sync operation.**
 
 ### Updating the toctree Structure
 
@@ -300,6 +302,71 @@ Some translation branches may have pages not present in `docs-v3-en` (e.g., `ope
 - **Do not** add legacy pages to `docs-v3-en` unless they're being promoted to canonical status
 - Legacy pages may need link updates if `conf.py` substitutions change
 
+### CJK + RST Inline Markup
+
+When translating documentation into Chinese, Japanese, or Korean (CJK), RST inline markup frequently breaks because the closing delimiter touches a CJK character that RST doesn't recognize as a valid terminator.
+
+**The Rule:** RST inline markup closing delimiters must be followed by **whitespace** or **ASCII punctuation** only. Characters from Unicode blocks outside ASCII — including CJK ideographs and full-width punctuation — are NOT recognized as valid terminators.
+
+**Affected markup types and their Sphinx warnings:**
+
+| Markup | Syntax | Warning when broken |
+|---|---|---|
+| Strong (bold) | `**text**` | `Inline strong start-string without end-string` |
+| Literal (code) | ` ``text`` ` | `Inline literal start-string without end-string` |
+| Substitution ref | `\|link_name\|` | `Inline substitution_reference start-string without end-string` |
+
+**Characters that break inline markup** (non-exhaustive):
+
+| Category | Characters | Examples |
+|---|---|---|
+| CJK ideographs | All Han characters | `中文字符` immediately after `**` or ` `` ` ` |
+| Full-width parentheses | `（）` | `**text**（` causes `strong` warning |
+| Full-width punctuation | `。，、：；！？` | Usually tolerated, but `（）` and Chinese chars always fail |
+| Em-dash | `——` | `**text**——` causes `strong` warning |
+
+**The Fix:** Insert `\ ` (backslash-escaped space) between the closing delimiter and the CJK character:
+
+```rst
+# Wrong:
+**加粗文本**中文           → WARNING: strong start-string without end-string
+``LANGUAGE``变量           → WARNING: literal start-string without end-string
+|link_aliyun|（控制台）    → WARNING: substitution_reference start-string without end-string
+**OpenAI**（ChatGPT）      → WARNING: strong start-string without end-string
+
+# Correct:
+**加粗文本**\ 中文          → escaped space before CJK character
+``LANGUAGE``\ 变量          → escaped space before CJK character
+|link_aliyun|\ （控制台）   → escaped space before full-width parenthesis
+**OpenAI**\ （ChatGPT）     → escaped space before full-width parenthesis
+```
+
+**Patterns to check before committing to any CJK branch:**
+
+1. `grep -n '\*\*[^*]+\*\*[（\p{Han}]' docs/source/**/*.rst` — bold + CJK
+2. `grep -n '``[^`]+``[（\p{Han}]' docs/source/**/*.rst` — literal + CJK
+3. `grep -n '|link_[a-z_]+|[（\p{Han}]' docs/source/**/*.rst` — substitution ref + CJK
+
+**Known-safe patterns** (no fix needed):
+- `**text**` followed by whitespace or ASCII `. , : ; ! ? ) ] } /` → always OK
+- `**text**。` or `**text**，` — full-width period/comma directly after `**` are **usually tolerated** by docutils, but verify with `make html`
+
+### Common Pitfalls When Syncing Translation Branches
+
+These issues were discovered during actual sync operations (EN → JA, EN → DE, EN → FR, etc.). Refer to this section before starting any translation branch sync.
+
+| # | Problem | Symptom | Root Cause | Fix |
+|---|---|---|---|---|
+| **P1** | UTF-8 encoding corruption | Japanese/Chinese text turns to gibberish (`æ¶ˆæ`, `é`, `ã` etc.) | PowerShell 5.1 `Get-Content -Raw` reads UTF-8 as system encoding (Shift-JIS on JP Windows). `Set-Content` / `[System.IO.File]::WriteAllText` then writes garbled bytes back. | **Never** use PowerShell for CJK file content operations. Use `Edit` / `Write` tools exclusively. Use `git checkout -- <file>` to restore corrupted files. |
+| **P2** | Untracked files lost during branch switch | Newly created `.rst` files disappear after `git checkout --force <other-branch>` | Untracked files persist across checkouts *in theory*, but `--force` combined with working tree conflicts or PowerShell file operations can cause loss. | Immediately commit or stash new files before switching branches. Verify with `git status` after returning. |
+| **P3** | Line ending corruption | File stops rendering; `Edit` tool fails with "String not found" | `Set-Content` on PowerShell 5.1 writes CR-only (`\r`) line endings. RST/docutils requires LF or CRLF. | Use `Write` tool for new files. For existing files, only use `Edit`. Check with `git diff` after any PowerShell file operation. |
+| **P4** | CJK + RST inline markup | `Inline strong/literal/substitution_reference start-string without end-string` | `**bold**` / `` ``literal`` `` / `\|link\|` / `:ref:` followed by CJK character or full-width punctuation (`（）`、`「」`、`。，、`) — RST doesn't recognize these as valid terminators. | Insert `\ ` (backslash-escaped space) between closing delimiter and CJK character. See [CJK + RST Inline Markup](#cjk--rst-inline-markup). |
+| **P5** | Section title underline too short | `Title underline too short` | Translated title is longer than English original (e.g., "Poses" → "Postures"), but the RST underline (`===`, `---`, `^^^`) was not extended. | Count characters in the translated title, extend the underline to at least match. |
+| **P6** | Duplicate `\|link\|` definition | Sphinx warning about duplicate substitution | `\|link_openai_platform\|` defined both inline in `openclaw.rst` and globally in `conf.py` `rst_epilog`. The inline definition in openclaw.rst was a copy-paste artifact from the English version. | Remove the inline `.. \|link_xxx\| raw:: html` block from `openclaw.rst` — rely on `conf.py`'s global definition. |
+| **P7** | New `.rst` file not in toctree | `document isn't included in any toctree` | File was created on disk but not added to the parent chapter's `.. toctree::` directive. | After creating a new lesson file, verify it appears in the chapter's toctree (e.g., `play_with_python.rst` for Python lessons). |
+| **P8** | Existing files have outdated code/commands | Script names, git branches, file paths differ from EN branch | The initial sync only added *new* files (AI chapter, OpenClaw, Action Gallery) but **did not propagate content updates to pre-existing files**. The EN branch had accumulated fixes (numbered script names, updated install commands, corrected paths) that were never merged into translation branches. | Before declaring sync complete, run `git diff docs-v3-en <branch> -- docs/source/` and review all files. Pay special attention to: `.. code-block::` content, `sudo python3` commands, `git clone` commands, and file paths. |
+| **P9** | `python_action_gallery.rst` missing from all branches | toctree warning in all 6 translation branches | File was created during initial sync but toctree entry was never added to `play_with_python.rst` in any branch. Discovered during JA branch work and fixed for all branches retroactively. | After creating any new lesson file, check `git grep "<filename>" <branch> -- docs/source/` to confirm it appears in a toctree. |
+
 ---
 
 ## Notes for AI Assistants
@@ -310,9 +377,11 @@ When working on this repository:
 2. **The Facebook community note** at the top of every `.rst` file must be translated to the target language — use the existing translation from `index.rst` on that branch as a template.
 3. **`conf.py` link substitutions** are the single source of external URLs. Never hardcode external links in `.rst` files — use `|link_xxx|` substitutions.
 4. **Reference labels** (`.. _label:`) are code identifiers, not human-readable text. Never translate them.
-5. **Code blocks** (Python, bash) are never translated. Comments within code blocks may be translated if they are user-facing, but variable names, function names, and command strings stay as-is.
-6. **The `_shared` submodule** should not be modified directly — changes to shared assets go through the `sf-shared` repo.
-7. **`.gitignore` already excludes** `.vscode`, `build*`, `secret*` files, and `.claude/` — do not commit these.
-8. **Build output** goes to `docs/build/` and is gitignored — never commit build artifacts.
-9. **When in doubt about language coverage**, check all `docs-v3-*` branches to understand what's been translated and what's lagging.
-10. **The `show` script** at the repo root is a license/warranty display utility — it's not part of the documentation build.
+5. **RST section underlines must match title length.** When translating section titles, the underline characters (`=`, `-`, `^`, `~`) must be at least as long as the title text above them. Translated titles are often longer — always count and extend the underline accordingly. Sphinx raises `Title underline too short` on mismatch.
+6. **RST inline markup must be separated from CJK characters.** RST inline markup (`**bold**`, ` ``literal`` `, `|link_substitution|`) requires the closing delimiter to be followed by whitespace or **ASCII** punctuation. Chinese/Japanese/Korean characters and full-width punctuation (`（）「」『』。，、：；！？`) do NOT qualify. When any of these follow inline markup, insert an escaped space `\ ` between the closing delimiter and the CJK character. See [CJK + RST Inline Markup](#cjk--rst-inline-markup) for the full reference.
+7. **Code blocks** (Python, bash) are never translated. Comments within code blocks may be translated if they are user-facing, but variable names, function names, and command strings stay as-is.
+8. **The `_shared` submodule** should not be modified directly — changes to shared assets go through the `sf-shared` repo.
+9. **`.gitignore` already excludes** `.vscode`, `build*`, `secret*` files, and `.claude/` — do not commit these.
+10. **Build output** goes to `docs/build/` and is gitignored — never commit build artifacts.
+11. **When in doubt about language coverage**, check all `docs-v3-*` branches to understand what's been translated and what's lagging.
+12. **The `show` script** at the repo root is a license/warranty display utility — it's not part of the documentation build.
