@@ -91,7 +91,7 @@ Here's how to set it up:
    .. code-block:: bash
    
        cd ~/picrawler/examples
-       sudo nano 18.online_llm_test.py
+       sudo nano 17_online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``gpt-4o``):
 
@@ -114,7 +114,7 @@ Here's how to set it up:
 
    .. code-block:: bash
    
-       sudo python3 18.online_llm_test.py
+       sudo python3 17_online_llm_test.py
    
 
 ----
@@ -170,7 +170,7 @@ Go to the official |link_gemini_model| page, here you’ll see the list of model
    .. code-block:: bash
 
        cd ~/picrawler/examples
-       sudo nano 18.online_llm_test.py
+       sudo nano 17_online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``gemini-2.5-flash``):
 
@@ -191,7 +191,7 @@ Go to the official |link_gemini_model| page, here you’ll see the list of model
 
    .. code-block:: bash
 
-       sudo python3 18.online_llm_test.py
+       sudo python3 17_online_llm_test.py
 
 ----
 
@@ -268,7 +268,7 @@ Mainland China users can instead use the **Bailian (百炼)** console.
    .. code-block:: bash
 
        cd ~/picrawler/examples
-       sudo nano 18.online_llm_test.py
+       sudo nano 17_online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``qwen-plus``):
 
@@ -290,7 +290,7 @@ Mainland China users can instead use the **Bailian (百炼)** console.
 
    .. code-block:: bash
    
-       sudo python3 18.online_llm_test.py
+       sudo python3 17_online_llm_test.py
 
 Grok (xAI)
 ------------------
@@ -341,7 +341,7 @@ Go to the Models page in the xAI console. Here you can see all the models availa
    .. code-block:: bash
 
        cd ~/picrawler/examples
-       sudo nano 18.online_llm_test.py
+       sudo nano 17_online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``grok-4-latest``):
 
@@ -362,7 +362,7 @@ Go to the Models page in the xAI console. Here you can see all the models availa
 
    .. code-block:: bash
    
-       sudo python3 18.online_llm_test.py
+       sudo python3 17_online_llm_test.py
    
 ----
 
@@ -417,7 +417,7 @@ At the time of writing (2025-09-12), DeepSeek offers:
    .. code-block:: bash
 
        cd ~/picrawler/examples
-       sudo nano 18.online_llm_test.py
+       sudo nano 17_online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``deepseek-chat``):
 
@@ -439,7 +439,7 @@ At the time of writing (2025-09-12), DeepSeek offers:
 
    .. code-block:: bash
    
-       sudo python3 18.online_llm_test.py
+       sudo python3 17_online_llm_test.py
 
 ----
 
@@ -506,7 +506,7 @@ Doubao is ByteDance's AI model platform (Volcengine Ark).
    .. code-block:: bash
 
        cd ~/picrawler/examples
-       sudo nano 18.online_llm_test.py
+       sudo nano 17_online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``doubao-seed-1-6-250615``):
 
@@ -527,7 +527,7 @@ Doubao is ByteDance's AI model platform (Volcengine Ark).
 
    .. code-block:: bash
    
-       sudo python3 18.online_llm_test.py
+       sudo python3 17_online_llm_test.py
 
 
 General
@@ -575,7 +575,7 @@ For those platforms, you will need to manually obtain your **API Key** and the c
    .. code-block:: bash
 
       cd ~/picrawler/examples
-      sudo nano 18.online_llm_test.py
+      sudo nano 17_online_llm_test.py
 
 #. Replace the content of a Python file with the following example, and fill in the correct ``base_url`` and ``model`` for your platform:
 
@@ -604,7 +604,7 @@ For those platforms, you will need to manually obtain your **API Key** and the c
 
    .. code-block:: bash
 
-      python3 18.online_llm_test.py
+      python3 17_online_llm_test.py
 
 
 
