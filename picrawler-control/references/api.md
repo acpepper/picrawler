@@ -188,25 +188,14 @@ Vilib.detect_obj_parameter['qr_y']        # QR Y
 
 # Capture photo
 from time import strftime, localtime
+from os.path import expanduser
 name = f"photo_{strftime('%Y-%m-%d-%H-%M-%S', localtime())}"
-Vilib.take_photo(name, "/home/pi/Pictures/")
-# Saved as /home/pi/Pictures/photo_....jpg
+Vilib.take_photo(name, expanduser("~/Pictures/"))
+# Saved as ~/Pictures/photo_....jpg
 
 # Cleanup
 Vilib.camera_close()
 ```
-
-## Servo Calibration
-
-After assembly, run calibration before first use:
-
-```bash
-cd ~/picrawler/examples
-sudo python3 0_calibration.py
-# Follow the web UI at http://<pi-ip>:9000/
-```
-
-Servo offsets are saved to `~/.config/.picrawler.config`.
 
 ## Wiring Info
 

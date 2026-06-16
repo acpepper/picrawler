@@ -10,17 +10,14 @@ Usage:
   pc.py sound volume <0-100>
   pc.py sound music <file> [--volume N]
   pc.py sound stop
-  pc.py calibrate
 
 Examples:
   pc.py move forward --steps 3 --speed 60
   pc.py pose stand --speed 40
   pc.py sensor distance
-  pc.py sound play /home/pi/picrawler/examples/sounds/talk1.wav --volume 80
+  pc.py sound play ~/picrawler/examples/sounds/talk1.wav --volume 80
 """
 
-import sys
-import os
 import argparse
 from time import sleep
 
@@ -68,20 +65,6 @@ def cmd_sound(args):
         music.music_stop()
 
 
-def cmd_calibrate(args):
-    """Run the PiCrawler calibration (servo zeroing)."""
-    sys.path.insert(0, os.path.expanduser("~/picrawler/examples"))
-    # Import and run calibration
-    from picrawler import Picrawler
-    from robot_hat import utils
-    utils.reset_mcu()
-    print("=== PiCrawler Calibration ===")
-    print("Connect via web browser and follow the UI.")
-    print("Starting calibration server...")
-    crawler = Picrawler()
-    crawler.cali_helper_web()  # interactive web calibration
-
-
 def main():
     parser = argparse.ArgumentParser(description="PiCrawler Robot Controller")
     sub = parser.add_subparsers(dest="command")
@@ -115,10 +98,6 @@ def main():
     sound_p.add_argument("file", nargs="?", help="Sound file path")
     sound_p.add_argument("--volume", type=int, default=None, help="Volume 0-100")
     sound_p.set_defaults(func=cmd_sound)
-
-    # calibrate
-    cal_p = sub.add_parser("calibrate", help="Run servo calibration")
-    cal_p.set_defaults(func=cmd_calibrate)
 
     args = parser.parse_args()
     args.func(args)
