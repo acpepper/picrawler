@@ -166,4 +166,48 @@ rst_epilog = """
 
     <a href="https://www.sunfounder.com/products/picrawler-robot-kit?_pos=1&_sid=2ebeb7ad0&_ss=r" target="_blank">PiCrawler</a>
 
+.. |link_aliyun| raw:: html
+
+    <a href="https://bailian.console.aliyun.com/?spm=5176.29597918.J_SEsSjsNv72yRuRFS2VknO.2.40a37b08ic1XHy&tab=model#/api-key" target="_blank">Bailian コンソール</a>
+
+.. |link_rpi_connect| raw:: html
+
+    <a href="https://www.raspberrypi.com/documentation/services/connect.html" target="_blank">Raspberry Pi Connect</a>
+
+.. |link_qwen_inter| raw:: html
+
+    <a href="https://www.alibabacloud.com/help/en/model-studio/get-api-key" target="_blank">API キーを取得</a>
+
+.. |link_ollama_hub| raw:: html
+
+    <a href="https://ollama.com/library" target="_blank">Ollama Hub</a>
+
+.. |link_ollama| raw:: html
+
+    <a href="https://ollama.com/download" target="_blank">Ollama ダウンロードページ</a>
+
+.. |link_piper_voice| raw:: html
+
+    <a href="https://github.com/rhasspy/piper/blob/master/VOICES.md" target="_blank">Piper 音声</a>
+
+.. |link_grok_ai| raw:: html
+
+    <a href="https://console.x.ai/team/f424aae2-94c8-4602-91bf-af8452fda9a2/models" target="_blank">xAI Cloud コンソール</a>
+
+.. |link_deepseek| raw:: html
+
+    <a href="https://platform.deepseek.com/sign_in" target="_blank">Deepseek プラットフォーム</a>
+
+.. |link_doubao| raw:: html
+
+    <a href="https://console.volcengine.com/auth/login" target="_blank">Volcengine</a>
+
+.. |link_gemini_model| raw:: html
+
+    <a href="https://ai.google.dev/gemini-api/docs/models#model-variations" target="_blank">Gemini モデル</a>
+
+.. |link_google_ai| raw:: html
+
+    <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>
+
 """
