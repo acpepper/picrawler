@@ -204,7 +204,27 @@ When adding a new external link, add the `|link_xxx|` definition to `conf.py` on
 
 ## Submodule: `docs/source/_shared`
 
-Points to `https://github.com/sunfounder/sf-shared.git` (branch `main`). Contains shared SunFounder documentation assets reused across all product repos. When checking out this repo, run:
+Points to `https://github.com/sunfounder/sf-shared.git`. Contains shared SunFounder documentation assets (Sphinx templates, brand styles, etc.) reused across all product repos.
+
+### Language-Specific Branch Mapping
+
+Each language branch of this repo tracks a **corresponding language branch** in the `sf-shared` submodule. The `.gitmodules` file on each branch specifies which `sf-shared` branch to follow:
+
+| PiCrawler Branch | sf-shared Branch |
+|---|---|
+| `docs-v3-en` | `main` |
+| `docs-v3-de` | `docs-de` |
+| `docs-v3-cn` | `docs-cn` |
+| `docs-v3-fr` | `docs-fr` |
+| `docs-v3-es` | `docs-es` |
+| `docs-v3-it` | `docs-it` |
+| `docs-v3-ja` | `docs-ja` |
+
+> **When syncing a translation branch, the submodule branch mapping is already set in `.gitmodules` on that branch — do not change it.** Running `git submodule update --remote` on a language branch will pull the latest from its corresponding sf-shared language branch.
+
+### Checkout
+
+When checking out this repo, run:
 
 ```bash
 git submodule update --init --recursive
@@ -382,7 +402,7 @@ When working on this repository:
 5. **RST section underlines must match title length.** When translating section titles, the underline characters (`=`, `-`, `^`, `~`) must be at least as long as the title text above them. Translated titles are often longer — always count and extend the underline accordingly. **For CJK titles (JA/ZH), Sphinx/docutils may use display-width rather than `len()` — make the underline clearly longer than the character count** (add 4–8 extra chars). See [P5](#common-pitfalls-when-syncing-translation-branches).
 6. **RST inline markup must be separated from CJK characters.** RST inline markup (`**bold**`, ` ``literal`` `, `|link_substitution|`) requires the closing delimiter to be followed by whitespace or **ASCII** punctuation. Chinese/Japanese/Korean characters and full-width punctuation (`（）「」『』。，、：；！？`) do NOT qualify. When any of these follow inline markup, insert an escaped space `\ ` between the closing delimiter and the CJK character. See [CJK + RST Inline Markup](#cjk--rst-inline-markup) for the full reference.
 7. **Code blocks** (Python, bash) are never translated. Comments within code blocks may be translated if they are user-facing, but variable names, function names, and command strings stay as-is.
-8. **The `_shared` submodule** should not be modified directly — changes to shared assets go through the `sf-shared` repo.
+8. **The `_shared` submodule** should not be modified directly — changes to shared assets go through the `sf-shared` repo. Each language branch of this repo tracks a corresponding language branch in sf-shared (see [Language-Specific Branch Mapping](#language-specific-branch-mapping)). When working on a translation branch, `git submodule update` pulls from that language's sf-shared branch, not from `main`.
 9. **`.gitignore` already excludes** `.vscode`, `build*`, `secret*` files, and `.claude/` — do not commit these.
 10. **Build output** goes to `docs/build/` and is gitignored — never commit build artifacts.
 11. **When in doubt about language coverage**, check all `docs-v3-*` branches to understand what's been translated and what's lagging.
