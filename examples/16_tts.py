@@ -1,28 +1,14 @@
 #!/usr/bin/env python3
 from robot_hat.tts import Piper, Espeak
 
-# ── Text-to-Speech demo for PiCrawler ───────────────────────────────────
-# Press Ctrl+C to exit.
-# The TTS engines available in robot_hat.tts / picrawler.tts are:
-#
-#   Piper      — local neural TTS, offline, fast (best quality)
-#   EdgeTTS    — free cloud TTS, 100+ voices, no API key
-#   Espeak     — compact offline TTS, robotic, fastest
-#   Pico2Wave  — compact offline TTS
-#
-# Just instantiate and call tts.say(text).
-#   from robot_hat.tts import Piper
-#   tts = Piper(model="en_US-ryan-low")        # English
-#   tts = Piper(model="zh_CN-huayan-x_low")    # Chinese
-#   from robot_hat.tts import EdgeTTS
-#   tts = EdgeTTS(voice="en-US-AriaNeural")
-#   from robot_hat.tts import Espeak, Pico2Wave
-#   tts = Espeak()
-#   tts = Pico2Wave()
+# Text-to-Speech demo using robot_hat TTS module
+# Press Ctrl+C to exit
 
-# Choose TTS engine
-USE_PIPER = True          # True=Piper, False=Espeak
-TTS_MODEL = "en_US-ryan-low"   # Piper model (English); use "zh_CN-huayan-x_low" for Chinese
+# Set USE_PIPER=True for high-quality neural TTS (Piper), False for Espeak
+USE_PIPER = True
+
+# Piper model: "en_US-ryan-low" (English), "zh_CN-huayan-x_low" (Chinese)
+TTS_MODEL = "en_US-ryan-low"
 
 def main():
     print("=== PiCrawler Text-to-Speech Demo ===")
