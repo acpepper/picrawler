@@ -3,6 +3,25 @@ from secret import DOUBAO_API_KEY as API_KEY
 
 from voice_active_crawler import VoiceActiveCrawler
 
+# ── TTS engines ──────────────────────────────────────────────────────────
+# Pick one. The VoiceAssistant accepts any TTS instance via the `tts=` parameter.
+
+# Default: Piper — local neural TTS, offline, fast
+from picrawler.tts import Piper
+tts = Piper(model="zh_CN-huayan-x_low")
+
+# EdgeTTS — free cloud TTS, 100+ voices, no API key
+# from picrawler.tts import EdgeTTS
+# tts = EdgeTTS(voice="zh-CN-XiaoxiaoNeural")
+
+# Espeak — compact offline TTS, robotic, fastest
+# from picrawler.tts import Espeak
+# tts = Espeak()
+
+# Pico2Wave — compact offline TTS
+# from picrawler.tts import Pico2Wave
+# tts = Pico2Wave()
+
 llm = LLM(
     api_key=API_KEY,
     model="doubao-seed-1-6-250615",
@@ -15,7 +34,6 @@ NAME = "旺财"
 WITH_IMAGE = True
 
 # 设置模型和语言
-TTS_MODEL = "zh_CN-huayan-x_low"
 STT_LANGUAGE = "cn"
 
 # 是否开启键盘输入
@@ -69,7 +87,7 @@ vad = VoiceActiveCrawler(
     name=NAME,
     with_image=WITH_IMAGE,
     stt_language=STT_LANGUAGE,
-    tts_model=TTS_MODEL,
+    tts=tts,
     keyboard_enable=KEYBOARD_ENABLE,
     wake_enable=WAKE_ENABLE,
     wake_word=WAKE_WORD,

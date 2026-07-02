@@ -2,6 +2,25 @@ from picrawler.llm import Ollama as LLM
 
 from voice_active_crawler import VoiceActiveCrawler
 
+# ── TTS engines ──────────────────────────────────────────────────────────
+# Pick one. The VoiceAssistant accepts any TTS instance via the `tts=` parameter.
+
+# Default: Piper — local neural TTS, offline, fast
+from picrawler.tts import Piper
+tts = Piper(model="en_US-ryan-low")
+
+# EdgeTTS — free cloud TTS, 100+ voices, no API key
+# from picrawler.tts import EdgeTTS
+# tts = EdgeTTS(voice="en-US-AriaNeural")
+
+# Espeak — compact offline TTS, robotic, fastest
+# from picrawler.tts import Espeak
+# tts = Espeak()
+
+# Pico2Wave — compact offline TTS
+# from picrawler.tts import Pico2Wave
+# tts = Pico2Wave()
+
 # If Ollama runs on the same Raspberry Pi, use "localhost".
 # If it runs on another computer in your LAN, replace with that computer's IP address.
 llm = LLM(
@@ -16,7 +35,6 @@ NAME = "Buddy"
 WITH_IMAGE = False
 
 # Set models and languages
-TTS_MODEL = "en_US-ryan-low"
 STT_LANGUAGE = "en-us"
 
 # Enable keyboard input
@@ -68,7 +86,7 @@ vad = VoiceActiveCrawler(
     name=NAME,
     with_image=WITH_IMAGE,
     stt_language=STT_LANGUAGE,
-    tts_model=TTS_MODEL,
+    tts=tts,
     keyboard_enable=KEYBOARD_ENABLE,
     wake_enable=WAKE_ENABLE,
     wake_word=WAKE_WORD,
