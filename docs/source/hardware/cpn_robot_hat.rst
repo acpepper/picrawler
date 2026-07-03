@@ -23,7 +23,7 @@ Inoltre, dispone dei GPIO che derivano direttamente dal Raspberry Pi stesso.
 È dotata anche di un altoparlante, 
 che può essere utilizzato per riprodurre musica di sottofondo, effetti sonori e implementare funzioni TTS, rendendo il tuo progetto più interessante.
 
-Supporta un ingresso di alimentazione da 7-12V con 2 indicatori di batteria, 1 indicatore di carica e 1 indicatore di accensione. 
+Supporta un ingresso di alimentazione da 7-12V con 2 indicatori del livello di batteria, 1 indicatore di carica e 1 indicatore di accensione. 
 La scheda dispone anche di un LED e di un pulsante utilizzabili per testare rapidamente alcuni effetti.
 
 Per istruzioni dettagliate, fai riferimento a: |link_robot_hat_v4|.
