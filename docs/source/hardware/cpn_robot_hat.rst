@@ -23,7 +23,7 @@ Elle comprend également des GPIOs qui sont reliées directement au Raspberry Pi
 La carte est également équipée d'un haut-parleur, 
 qui peut être utilisé pour diffuser de la musique d'ambiance, des effets sonores et mettre en œuvre des fonctions TTS pour rendre votre projet plus interactif.
 
-Elle accepte une alimentation de 7 à 12V avec deux voyants de batterie, un voyant de charge et un voyant d'alimentation. 
+Elle accepte une alimentation de 7 à 12V avec 2 voyants de niveau de batterie, un voyant de charge et un voyant d'alimentation. 
 La carte dispose également d'une LED utilisateur et d'un bouton permettant de tester rapidement certains effets.
 
 Pour des instructions détaillées, veuillez vous référer à : |link_robot_hat_v4|.
