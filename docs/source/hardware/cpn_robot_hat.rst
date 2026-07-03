@@ -23,7 +23,7 @@ As well as the GPIOs that lead out of the Raspberry Pi itself.
 It also comes with a Speaker, 
 which can be used to play background music, sound effects and implement TTS functions to make your project more interesting.
 
-Accepts 7-12V power input with 2 battery indicators, 1 charge indicator and 1 power indicator. 
+Accepts 7-12V power input with 2 battery level indicators, 1 charge indicator and 1 power indicator.
 The board also has a user available LED and a button for you to quickly test some effects.
 
 For detailed instructions, please refer to: |link_robot_hat_v4|.
