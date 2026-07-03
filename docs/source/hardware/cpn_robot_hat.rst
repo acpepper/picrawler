@@ -23,7 +23,7 @@ También dispone de los GPIOs que se derivan directamente de la Raspberry Pi.
 Viene con un altavoz, 
 que puede utilizarse para reproducir música de fondo, efectos de sonido e implementar funciones TTS, haciendo que tu proyecto sea más interesante.
 
-Acepta una entrada de energía de 7-12V con 2 indicadores de batería, 1 indicador de carga y 1 indicador de energía. 
+Acepta una entrada de energía de 7-12V con 2 indicadores de nivel de batería, 1 indicador de carga y 1 indicador de energía. 
 La placa también incluye un LED y un botón disponible para el usuario, lo que permite probar rápidamente algunos efectos.
 
 Para instrucciones detalladas, por favor consulta: |link_robot_hat_v4|.

@@ -25,4 +25,3 @@ En este capítulo encontrarás una descripción de la función de cada módulo, 
     cpn_robot_hat
     cpn_camera
     cpn_ultrasonic
-    cpn_battery
