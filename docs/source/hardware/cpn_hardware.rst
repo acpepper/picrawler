@@ -22,7 +22,6 @@ In diesem Kapitel werden die Funktionen, technischen Parameter und Funktionsweis
 .. toctree::  
     :maxdepth: 1  
 
-    cpn_robot_hat  
-    cpn_camera  
-    cpn_ultrasonic  
-    cpn_battery  
+    cpn_robot_hat
+    cpn_camera
+    cpn_ultrasonic

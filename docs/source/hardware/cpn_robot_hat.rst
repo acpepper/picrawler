@@ -24,8 +24,7 @@ Die Platine wird mit einem Lautsprecher geliefert,
 der verwendet werden kann, um Hintergrundmusik, Soundeffekte abzuspielen oder TTS-Funktionen zu implementieren,  
 um Ihr Projekt interessanter zu gestalten.  
 
-Sie akzeptiert eine Stromversorgung von 7–12V und verfügt über zwei Batterieanzeigen,  
-eine Ladeanzeige und eine Stromanzeige.  
+Sie akzeptiert eine Stromversorgung von 7–12V und verfügt über 2 Batteriestandsanzeigen, eine Ladeanzeige und eine Stromanzeige.  
 Die Platine hat außerdem eine frei verfügbare LED und einen Button, mit denen Sie schnell einige Effekte testen können.  
 
 Für detaillierte Anweisungen siehe: |link_robot_hat_v4|.  
