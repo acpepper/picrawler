@@ -20,6 +20,8 @@ For development iteration:
 sudo pip3 uninstall picrawler --break -y && sudo pip3 install . --break --no-deps --no-build-isolation
 ```
 
+> **Note:** The install commands above use `sudo` and must be run from a real terminal on the Pi. `sudo` requires a password and cannot run non-interactively (e.g. a headless `ssh host "..."` command or any tool without a TTY), so package installs can't be automated from here.
+
 No test suite, linter, or type-checker exists in this repo. Dependencies: `robot_hat` (installed separately from source, 2.5.x branch), `readchar`.
 
 ## Architecture
@@ -33,7 +35,7 @@ picrawler/
   stt.py               # Re-exports STT from robot_hat.stt
   tts.py               # Re-exports TTS from robot_hat.tts
   version.py           # Version string (2.1.4)
-examples/              # Numbered demo scripts (0-19, matching online course)
+examples/              # Numbered demo scripts (0-20, matching online course)
   voice_active_crawler.py     # VoiceActiveCrawler class (base, not numbered)
   secret.py                   # API keys (git-ignored)
 ```
@@ -77,30 +79,35 @@ Re-exported from `robot_hat.llm`: `OpenAI`, `Ollama`, `Doubao`, `DeepSeek`, `Gem
 
 ## Running examples
 
-All examples must run on the Raspberry Pi with `sudo` (required by `robot_hat` for GPIO/servo access). Examples are numbered to match the online course at <https://docs.sunfounder.com/projects/pi-crawler/en/latest/python/play_with_python.html>.
+Examples run on the Raspberry Pi. `sudo` is NOT required to run them on this machine — the `elpimiento` user is in the `gpio`, `i2c`, and `spi` groups, so servo/I2C access works without it. (`utils.reset_mcu()` shells out to `sudo` and fails harmlessly — non-fatal; servos still respond over I2C.) Examples are numbered to match the online course at <https://docs.sunfounder.com/projects/pi-crawler/en/latest/python/play_with_python.html>.
 
 ```bash
-# Core course examples (0-13)
-sudo python3 examples/0_calibration.py       # Servo calibration
-sudo python3 examples/1_move.py              # Basic movement
-sudo python3 examples/2_keyboard_control.py  # W/A/S/D control
-sudo python3 examples/3_sound_effect.py      # Sound effects
-sudo python3 examples/4_avoid.py             # Obstacle avoidance
-sudo python3 examples/5_display.py           # Camera display
-sudo python3 examples/7_bull_fight.py        # Bull fight game
-sudo python3 examples/9_preset_actions.py    # Pose demonstration
+# Core course examples (0-14) -- no sudo needed
+python3 examples/0_calibration.py        # Servo calibration (interactive)
+python3 examples/1_move.py               # Basic movement / walking gaits
+python3 examples/2_keyboard_control.py   # W/A/S/D control (interactive)
+python3 examples/3_sound_effect.py       # Sound effects (the 't' TTS key needs espeak installed)
+python3 examples/4_avoid.py              # Obstacle avoidance (ultrasonic)
+python3 examples/5_display.py            # Camera display
+python3 examples/6_record_video.py       # Record video
+python3 examples/7_bull_fight.py         # Bull fight game (camera + vilib)
+python3 examples/8_treasure_hunt.py      # Treasure hunt (camera + vilib)
+python3 examples/9_do_step.py            # Custom step control
+python3 examples/10_do_single_leg.py     # Move a single leg (interactive)
+python3 examples/11_record_new_step.py   # Record/playback custom steps (interactive)
+python3 examples/12_twist.py             # Twist dance + music
+python3 examples/13_emotional_robot.py   # Expressive pose actions
+python3 examples/14_preset_actions.py    # Preset action / pose demonstration
 
-# Extended examples (14)
-sudo python3 examples/14_do_step.py          # Custom step control
+# STT/TTS demos (15-16) -- require espeak / voice stack
+python3 examples/15_stt.py               # Speech-to-text
+python3 examples/16_tts.py               # Text-to-speech
 
-# STT/TTS demos (15-16)
-sudo python3 examples/15_stt.py              # Speech-to-text
-sudo python3 examples/16_tts.py              # Text-to-speech
-
-# Voice AI (17-19)
-sudo python3 examples/17_voice_active_crawler_gpt.py     # OpenAI GPT-4o
-sudo python3 examples/18_voice_active_crawler_ollama.py   # Local Ollama
-sudo python3 examples/19_voice_active_crawler_doubao.py   # Doubao (Chinese)
+# Voice AI (17-20)
+python3 examples/17_online_llm_test.py             # Online LLM chat test
+python3 examples/18_voice_active_crawler_gpt.py    # OpenAI GPT
+python3 examples/19_voice_active_crawler_doubao.py # Doubao (Chinese)
+python3 examples/20_voice_active_crawler_ollama.py # Local Ollama
 ```
 
 Configure API keys in `examples/secret.py` before running LLM-based examples.

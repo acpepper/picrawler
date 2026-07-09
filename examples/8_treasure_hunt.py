@@ -2,7 +2,7 @@
 from picrawler import Picrawler
 from time import sleep, time
 from robot_hat import Music
-from robot_hat.tts import Espeak
+from robot_hat.tts import Piper
 from vilib import Vilib
 import readchar
 import random
@@ -10,7 +10,10 @@ import threading
 
 crawler = Picrawler()
 music = Music()   # kept for compatibility (not used here)
-tts = Espeak()
+# Piper local neural TTS (l2arctic voice) instead of espeak, which false-fails
+# its "is espeak installed" check due to a poll() race after Music() init.
+tts = Piper()
+tts.set_model('en_US-l2arctic-medium')
 
 MANUAL = '''
 Press keys on keyboard to control Picrawler!

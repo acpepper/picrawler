@@ -9,7 +9,12 @@ class Picrawler(Robot):
     B = 78
     C = 33
     OFFSET_FILE = os.path.expanduser('~/.config/.picrawler.config')
-    PIN_LIST = [9, 10, 11, 3, 4, 5, 0, 1, 2, 6, 7, 8]
+    # NOTE: leg0 uses HAT channels [9, 11, 10] (lift & hip swapped vs the
+    # other legs). The SunFounder Robot HAT has PWM channels 10 and 11
+    # physically swapped (reg 0x2A<->0x2B); channel 10 actuates the hip and
+    # channel 11 the lift. Wiring/silkscreen are correct; the board maps them
+    # crossed. This remap cancels that so leg0 matches legs 1-3.
+    PIN_LIST = [9, 11, 10, 3, 4, 5, 0, 1, 2, 6, 7, 8]
 
     def __init__(self, pin_list=PIN_LIST, init_angles=None):  
 

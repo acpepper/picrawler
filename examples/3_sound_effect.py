@@ -1,10 +1,13 @@
 from time import sleep
 import readchar
 from robot_hat import Music
-from robot_hat.tts import Espeak
+from robot_hat.tts import Piper
 
+# Piper: local neural TTS (nicer voice than espeak, and no espeak poll() race).
+# Built before Music() out of caution re: pygame's child-reaper thread.
+tts = Piper()
+tts.set_model('en_US-l2arctic-medium')
 music = Music()
-tts = Espeak()
 
 manual = '''
 Press a key to trigger actions (no Enter needed):
