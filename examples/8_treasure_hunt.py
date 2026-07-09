@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from picrawler import Picrawler
 from time import sleep, time
-from robot_hat import Music
 from robot_hat.tts import Piper
 from vilib import Vilib
 import readchar
@@ -9,9 +8,12 @@ import random
 import threading
 
 crawler = Picrawler()
-music = Music()   # kept for compatibility (not used here)
-# Piper local neural TTS (l2arctic voice) instead of espeak, which false-fails
-# its "is espeak installed" check due to a poll() race after Music() init.
+# Piper local neural TTS (l2arctic voice). We deliberately do NOT construct
+# robot_hat.Music() here: it was unused, and its pygame.mixer.init() grabs the
+# ALSA 'default' HifiBerry DAC exclusively, after which enable_speaker()'s
+# `play` silence keep-alive blocks ~30s waiting on the busy device (and makes
+# the following Piper() stall another ~30s). Piper alone enables the speaker
+# and starts in ~1s. (Also sidesteps espeak's false "not installed" poll() race.)
 tts = Piper()
 tts.set_model('en_US-l2arctic-medium')
 
